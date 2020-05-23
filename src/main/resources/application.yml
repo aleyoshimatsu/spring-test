@@ -1,0 +1,47 @@
+debug: false
+trace: false
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-test.alexandreyoshimatsu.dev
+  output:
+  ansi:
+    enabled: DETECT
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: DEBUG
+    org.zalando.logbook: TRACE
+    dev.alexandreyoshimatsu: DEBUG
+
+logbook:
+  include:
+    - /api/**
+    - /actuator/**
+  exclude:
+    - /actuator/health
+    - /api/admin/**
+  filter.enabled: true
+  secure-filter.enabled: true
+  format.style: json
+  strategy: default
+  minimum-status: 400
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Secret
+    parameters:
+      - access_token
+      - password
+      - senha
+      - token
+      - refreshToken
+    write:
+      chunk-size: 1000
