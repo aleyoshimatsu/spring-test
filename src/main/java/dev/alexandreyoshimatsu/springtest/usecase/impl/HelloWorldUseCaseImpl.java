@@ -12,7 +12,7 @@ public class HelloWorldUseCaseImpl implements HelloWorldUseCase {
 
     @Override
     public String printHello() {
-        return "Hello World!";
+        return printMessage("Hello World!");
     }
 
     @Override
