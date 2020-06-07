@@ -1,5 +1,6 @@
 package dev.alexandreyoshimatsu.springtest.entrypoint;
 
+import com.github.javafaker.Faker;
 import dev.alexandreyoshimatsu.springtest.entrypoint.data.HelloWorldRequest;
 import dev.alexandreyoshimatsu.springtest.entrypoint.data.HelloWorldResponse;
 import dev.alexandreyoshimatsu.springtest.usecase.HelloWorldUseCase;
@@ -27,6 +28,21 @@ public class HelloWorldController {
         HelloWorldResponse helloWorldResponse = HelloWorldResponse.builder()
                 .id(UUID.randomUUID().toString())
                 .mensagem(helloWorldUseCase.printHello())
+                .build();
+
+        return new ResponseEntity<>(helloWorldResponse, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/random/message")
+    public ResponseEntity<HelloWorldResponse> getRandomMessage() {
+
+        log.debug("/random/message");
+
+        Faker faker = new Faker();
+
+        HelloWorldResponse helloWorldResponse = HelloWorldResponse.builder()
+                .id(UUID.randomUUID().toString())
+                .mensagem(faker.gameOfThrones().character())
                 .build();
 
         return new ResponseEntity<>(helloWorldResponse, HttpStatus.OK);
