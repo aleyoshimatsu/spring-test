@@ -1,6 +1,7 @@
 package dev.alexandreyoshimatsu.springtest.usecase.impl;
 
 import dev.alexandreyoshimatsu.springtest.usecase.HelloWorldUseCase;
+import dev.alexandreyoshimatsu.springtest.usecase.entity.HelloWorldEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -18,5 +19,9 @@ public class HelloWorldUseCaseImpl implements HelloWorldUseCase {
     @Override
     public String printMessage(String message) {
         return message;
+    }
+
+    public void saveHelloWorld(HelloWorldEntity helloWorldEntity) {
+        log.debug(helloWorldEntity.toString());
     }
 }
