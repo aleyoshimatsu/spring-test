@@ -1,8 +1,11 @@
 #Create a multi-stage docker image
 
+#To compile and package using Docker multi-stage builds
+docker build . -t spring-test
+
 #Create a Docker image packaging an existing jar
 ./gradlew build
-docker build . -t spring-test
+docker build . -t spring-test -f Dockerfile.only-package -t spring-test
 
 #To run the docker image
 docker run -p -d 8080:8080 spring-test
