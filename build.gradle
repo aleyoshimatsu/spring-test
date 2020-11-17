@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 	id 'net.researchgate.release' version '2.8.1'
 	id 'net.ltgt.apt' version '0.20'
+	id 'com.gorylenko.gradle-git-properties' version '1.5.1'
 }
 
 apply plugin: 'net.ltgt.apt-idea'
@@ -12,6 +13,10 @@ group = 'dev.alexandreyoshimatsu'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
+
+bootJar {
+	mainClassName = 'dev.alexandreyoshimatsu.springtest.SpringTestApplication'
+}
 
 configurations {
 	compileOnly {
@@ -50,6 +55,16 @@ dependencies {
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	// If you are using mapstruct in test code
 	testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+springBoot {
+	buildInfo()
 }
 
 test {
