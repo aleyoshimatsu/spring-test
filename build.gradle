@@ -11,10 +11,7 @@ apply plugin: 'net.ltgt.apt-idea'
 group = 'dev.alexandreyoshimatsu'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-
-bootJar {
-	mainClassName = 'dev.alexandreyoshimatsu.springtest.SpringTestApplication'
-}
+targetCompatibility = '1.8'
 
 configurations {
 	compileOnly {
@@ -53,12 +50,6 @@ dependencies {
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 	// If you are using mapstruct in test code
 	testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-}
-
-dependencyManagement {
-	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-	}
 }
 
 test {
