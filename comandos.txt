@@ -11,4 +11,4 @@ docker build . -t spring-test -f Dockerfile.only-package -t spring-test
 docker save spring-test > spring-test.tar
 
 #To run the docker image
-docker run -d -p 8080:8080 spring-test
+docker run -d -p 8080:8080 --name spring-test spring-test
