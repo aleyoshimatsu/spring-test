@@ -29,8 +29,8 @@ public class SleuthFilter extends GenericFilterBean {
     @Autowired
     public SleuthFilter(Tracer tracer) {
         this.tracer = tracer;
-        this.traceId = "";
-        this.contextPath = "";
+        this.traceId = "traceId";
+        this.contextPath = "contextPath";
     }
 
     @Override
